@@ -1,31 +1,48 @@
-import React from 'react'
-import { useFilterContext } from '../context/filter_context'
-import { BsFillGridFill, BsList } from 'react-icons/bs'
-import styled from 'styled-components'
+import React from "react";
+import { useFilterContext } from "../context/filter_context";
+import { BsFillGridFill, BsList } from "react-icons/bs";
+import styled from "styled-components";
 const Sort = () => {
-  const {filtered_products: products, grid_view, setGridView, setListView} = useFilterContext()
-  return <Wrapper>
-    <div className="btn-container">
-      <button type='button' onClick={setGridView} className={`${grid_view ? 'active' : null}`}>
-        <BsFillGridFill/>
-      </button>
-      <button type='button' onClick={setListView} className={`${!grid_view ? 'active' : null}`}>
-        <BsList/>
-      </button>
-    </div>
-    <p>{products.length} products found</p>
-    <hr />
-    <form>
-      <label htmlFor='sort'>sort by</label>
-      <select name='sort' id='sort' className='sort-input'>
-        <option value="price-lowest">price (lowest)</option>
-        <option value="price-highest">price (highest)</option>
-        <option value="name-a">name (a-z)</option>
-        <option value="name-z">name (z-a)</option>
-      </select>
-    </form>
-  </Wrapper>
-}
+  const {
+    filtered_products: products,
+    grid_view,
+    setGridView,
+    setListView,
+    sort,
+    updateSort,
+  } = useFilterContext();
+  return (
+    <Wrapper>
+      <div className="btn-container">
+        <button
+          type="button"
+          onClick={setGridView}
+          className={`${grid_view ? "active" : null}`}
+        >
+          <BsFillGridFill />
+        </button>
+        <button
+          type="button"
+          onClick={setListView}
+          className={`${!grid_view ? "active" : null}`}
+        >
+          <BsList />
+        </button>
+      </div>
+      <p>{products.length} products found</p>
+      <hr />
+      <form>
+        <label htmlFor="sort">sort by</label>
+        <select name="sort" id="sort" className="sort-input" value={sort} onChange={updateSort}>
+          <option value="price-lowest">price (lowest)</option>
+          <option value="price-highest">price (highest)</option>
+          <option value="name-a">name (a-z)</option>
+          <option value="name-z">name (z-a)</option>
+        </select>
+      </form>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   display: grid;
@@ -88,6 +105,6 @@ const Wrapper = styled.section`
     font-size: 1rem;
     text-transform: capitalize;
   }
-`
+`;
 
-export default Sort
+export default Sort;

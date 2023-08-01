@@ -61,13 +61,67 @@ const Filters = () => {
             </div>
           </div>
           <div className="form-control">
-              <h5>company</h5>
-              <select name="company" value={company} onChange={updateFilters} className="company">
-                {companies.map((company, index) =>{
-                  return <option key={index} value={company}>{company}</option>
-                })}
-              </select>
+            <h5>company</h5>
+            <select
+              name="company"
+              value={company}
+              onChange={updateFilters}
+              className="company"
+            >
+              {companies.map((company, index) => {
+                return (
+                  <option key={index} value={company}>
+                    {company}
+                  </option>
+                );
+              })}
+            </select>
           </div>
+          <div className='form-control'>
+            <h5>colors</h5>
+            <div className='colors'>
+              {colors.map((c, index) => {
+                if (c === 'all') {
+                  return (
+                    <button
+                      key={index}
+                      name='color'
+                      onClick={updateFilters}
+                      data-color='all'
+                      className={`${
+                        color === 'all' ? 'all-btn active' : 'all-btn'
+                      }`}
+                    >
+                      all
+                    </button>
+                  )
+                }
+                return (
+                  <button
+                    key={index}
+                    name='color'
+                    style={{ background: c }}
+                    className={`${
+                      color === c ? 'color-btn active' : 'color-btn'
+                    }`}
+                    data-color={c}
+                    onClick={updateFilters}
+                  >
+                    {color === c ? <FaCheck /> : null}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          {/* Price */}
+          <div className="form-control">
+            <h5>Price</h5>
+            <p className="price">
+              {formatPrice(price)}
+            </p>
+            <input type="range" name="price" onChange={updateFilters} min={min_price} max={max_price} value={price}/>
+          </div>
+          {/* End of Price */}
         </form>
       </div>
     </Wrapper>

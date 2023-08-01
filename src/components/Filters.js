@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useFilterContext } from "../context/filter_context";
 import { getUniqueValues, formatPrice } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
+import { GiButtonFinger } from "react-icons/gi";
 
 const Filters = () => {
   const {
@@ -19,30 +20,50 @@ const Filters = () => {
     updateFilters,
     all_products,
     clearFilters,
-  } = useFilterContext()
+  } = useFilterContext();
 
-  const categories = getUniqueValues(all_products, 'category')
-  const companies = getUniqueValues(all_products, 'company')
-  const colors = getUniqueValues(all_products, 'colors')
+  const categories = getUniqueValues(all_products, "category");
+  const companies = getUniqueValues(all_products, "company");
+  const colors = getUniqueValues(all_products, "colors");
 
-  return(
-   <Wrapper>
-  <div className='content'>
-    <form onSubmit={(e) => e.preventDefault()}>
-      <div className='form-control'>
-        <input
-          type='text'
-          name='text'
-          value={text}
-          placeholder='search'
-          onChange={updateFilters}
-          className='search-input'
-        />
+  return (
+    <Wrapper>
+      <div className="content">
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="form-control">
+            <input
+              type="text"
+              name="text"
+              value={text}
+              placeholder="search"
+              onChange={updateFilters}
+              className="search-input"
+            />
+          </div>
+          <div className="form-control">
+            <h5>category</h5>
+            <div>
+              {categories.map((c, index) => {
+                return (
+                  <button
+                    key={index}
+                    name="category"
+                    type="button"
+                    className={`${
+                      category === c.toLowerCase() ? "active" : null
+                    }`}
+                    onClick={updateFilters}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </form>
       </div>
-      </form>
-    </div>
-  </Wrapper>
-  )
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`

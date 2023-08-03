@@ -54,8 +54,9 @@ export const CartProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    dispatch({type: COUNT_CART_TOTALS})
     localStorage.setItem('cart', JSON.stringify(state.cart))
-    console.log(state)
+    
   }, [state.cart])
 
   return (

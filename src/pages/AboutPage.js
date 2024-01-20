@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { PageHero } from '../components'
 import aboutImg from '../assets/hero-bcg.jpeg'
-import { FaMapPin } from 'react-icons/fa'
+//import { FaMapPin } from 'react-icons/fa'
 
 const AboutPage = () => {
   return <main>

@@ -26,12 +26,14 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
+    // eslint-disable-next-line
   }, [id]);
 
   useEffect(() => {
     if (error) {
       setTimeout(() => {
         history.push("/");
+        // eslint-disable-next-line
       }, 3000);
     }
   }, [error]);

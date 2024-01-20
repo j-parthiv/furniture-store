@@ -24,6 +24,7 @@ const FeaturedProducts = () => {
         return <Product key={product.id} {...product}/>
       })}
     </div>
+    <Link to="/product" className="btn">All Products</Link>
   </Wrapper>
 }
 

@@ -1,6 +1,6 @@
 # Furniture Store E-Commerce Site
 
-Welcome to the Furniture Store E-Commerce Site project! This repository contains a web application designed to mimic the functionality of an online furniture store.
+**Welcome to the Furniture Store E-Commerce Site project! This repository contains a web application designed to mimic the functionality of an online furniture store.**
 
 ## Features
 

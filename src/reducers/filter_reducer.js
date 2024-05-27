@@ -74,21 +74,21 @@ const filter_reducer = (state, action) => {
       });
     }
     // category
-    if (category && category !== "all") {
+    if (category !== "all") {
       tempProducts = tempProducts.filter((product) => {
         return product.category === category;
       });
     }
     // company
-    if (company && company !== "all") {
+    if (company !== "all") {
       tempProducts = tempProducts.filter((product) => {
         return product.company === company;
       });
     }
     // colors
-    if (color && color !== "all") {
+    if (color !== "all") {
       tempProducts = tempProducts.filter((product) => {
-        return product.colors && product.colors.includes(color);
+        return product.colors && product.colors.find((c) => c === color);
       });
     }
     // price

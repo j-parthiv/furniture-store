@@ -40,9 +40,7 @@ const filter_reducer = (state, action) => {
     const { sort, filtered_products } = state;
     let tempProducts = [...filtered_products];
     if (sort === "price-lowest") {
-      tempProducts = filtered_products.sort((a, b) => {
-        return a.price - b.price;
-      });
+      tempProducts = filtered_products.sort((a, b) => a.price - b.price);
     }
     if (sort === "price-highest") {
       tempProducts = filtered_products.sort((a, b) => b.price - a.price);
@@ -72,25 +70,25 @@ const filter_reducer = (state, action) => {
     // text
     if (text) {
       tempProducts = tempProducts.filter((product) => {
-        return product.name.toLowerCase().startsWith(text);
+        return product.name && product.name.toLowerCase().startsWith(text.toLowerCase());
       });
     }
     // category
-    if (category !== "all") {
+    if (category && category !== "all") {
       tempProducts = tempProducts.filter((product) => {
         return product.category === category;
       });
     }
     // company
-    if (company !== "all") {
+    if (company && company !== "all") {
       tempProducts = tempProducts.filter((product) => {
         return product.company === company;
       });
     }
     // colors
-    if (color !== "all") {
+    if (color && color !== "all") {
       tempProducts = tempProducts.filter((product) => {
-        return product.colors.find((c) => c === color);
+        return product.colors && product.colors.includes(color);
       });
     }
     // price

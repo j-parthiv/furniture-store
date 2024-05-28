@@ -1,8 +1,8 @@
 {
     "version": 2,
     "builds": [
-      { "src": "api/**/*.js", "use": "@vercel/node" },
-      { "src": "src/**/*", "use": "@vercel/static-build" }
+        { "src": "api/**/*.js", "use": "@vercel/node" },
+        { "src": "package.json", "use": "@vercel/static-build" }
     ],
     "routes": [
       { "src": "/api/(.*)", "dest": "/api/react-store-products.js" },

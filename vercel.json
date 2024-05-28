@@ -1,8 +1,0 @@
-{
-    "version": 2,
-    "routes": [
-      { "src": "/api/(.*)", "dest": "/api/react-store-products.js" },
-      { "src": "/api/(.*)", "dest": "/api/react-store-single-product.js" }
-    ]
-  }
-  
